@@ -4,12 +4,11 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
-import Card from "./src/Components/Card";
-import Header from "./src/Components/Header";
+import AppNavigator from './src/navigation/AppNavigator';
 
 const loadFonts = () => {
   return Font.loadAsync({
-    'Roboto': require("./assets/fonts/Roboto-Regular.ttf"),
+    Roboto: require("./assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
   });
 };
@@ -24,10 +23,7 @@ export default function App() {
   }
 
   return (
-    <View>
-      <Header />
-      <Card />
-    </View>
+      <AppNavigator />
   );
 }
 
