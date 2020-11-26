@@ -1,23 +1,26 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import card01 from "../../assets/card01_news.jpeg";
-const Card = () => {
+const Card = (props) => {
+  // console.log("Card props ->", props);
   return (
-    <View style={styles.card}>
-      <View style={styles.imageWrapper}>
-        <Image source={card01} style={styles.image} />
-      </View>
+    <TouchableOpacity onPress={() => props.navigation.navigate("NewsDetails")}>
+      <View style={styles.card}>
+        <View style={styles.imageWrapper}>
+          <Image source={card01} style={styles.image} />
+        </View>
 
-      <View style={styles.titleWrapper}>
-        <Text style={styles.title}>Dummy Title</Text>
-        <MaterialIcons name="favorite-border" color="#72bcd4" size={30}/>
-      </View>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Dummy Title</Text>
+          <MaterialIcons name="favorite-border" color="#72bcd4" size={30} />
+        </View>
 
-      <View style={styles.descriptionWrapper}>
-        <Text style={styles.description}>This is dummy description</Text>
+        <View style={styles.descriptionWrapper}>
+          <Text style={styles.description}>This is dummy description</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: 'center'
+    alignItems: "center",
   },
   descriptionWrapper: {
     paddingHorizontal: 15,
