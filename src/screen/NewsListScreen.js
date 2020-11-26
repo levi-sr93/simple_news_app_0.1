@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Card from "../Components/Card";
 
-const NewsListScreen = () => {
+const NewsListScreen = (props) => {
+  console.log(props)
+
   return (
-    <View>
+    <TouchableOpacity onPress={() => props.navigation.navigate('NewsDetails')}>
       <Card />
-    </View>
+    </TouchableOpacity>
   )
 }
 
