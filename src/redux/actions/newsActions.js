@@ -3,6 +3,7 @@ export const ADD_FAVORITES = "ADD_FAVORITES";
 
 export const fetchArticles = () => {
   return async (dispatch) => {
+    
     //logic to fetch data 
     const result = await fetch('http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=81b613598668492493f4adb02f3e6e1b');
 
