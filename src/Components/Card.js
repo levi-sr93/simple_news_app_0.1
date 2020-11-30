@@ -8,16 +8,16 @@ const Card = (props) => {
     <TouchableOpacity onPress={() => props.navigation.navigate("NewsDetails")}>
       <View style={styles.card}>
         <View style={styles.imageWrapper}>
-          <Image source={card01} style={styles.image} />
+          <Image source={{ uri: props.image }} style={styles.image} />
         </View>
 
         <View style={styles.titleWrapper}>
-          <Text style={styles.title}>Dummy Title</Text>
+          <Text style={styles.title}>{props.title}</Text>
           <MaterialIcons name="favorite-border" color="#72bcd4" size={30} />
         </View>
 
         <View style={styles.descriptionWrapper}>
-          <Text style={styles.description}>This is dummy description</Text>
+          <Text style={styles.description}>{props.description}</Text>
         </View>
       </View>
     </TouchableOpacity>

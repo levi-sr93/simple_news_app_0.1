@@ -9,7 +9,7 @@ export const fetchArticles = () => {
 
     //converting the result from the API to json format
     const resultData = await result.json();
-
+    
     dispatch({
       type: FETCH_ARTICLES,
       payload: resultData,
