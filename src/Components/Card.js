@@ -12,12 +12,20 @@ const Card = (props) => {
         </View>
 
         <View style={styles.titleWrapper}>
-          <Text style={styles.title}>{props.title}</Text>
+          <Text style={styles.title}>
+            {props.title.length > 25
+              ? props.title.slice(0, 25) + "..."
+              : props.title}
+          </Text>
           <MaterialIcons name="favorite-border" color="#72bcd4" size={30} />
         </View>
 
         <View style={styles.descriptionWrapper}>
-          <Text style={styles.description}>{props.description}</Text>
+          <Text style={styles.description}>
+            {props.description.length > 100
+              ? props.title.slice(0, 100) + " ..."
+              : props.description}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
