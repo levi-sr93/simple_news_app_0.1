@@ -1,9 +1,13 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import card01 from "../../assets/card01_news.jpeg";
+
+import { useDispatch } from "react-redux";
+import * as newsAction from "../redux/actions/newsActions";
+
 const Card = (props) => {
-  // console.log("Card props ->", props);
+  const dispatch = useDispatch();
+
   return (
     <TouchableOpacity onPress={() => props.navigation.navigate("NewsDetails")}>
       <View style={styles.card}>
@@ -17,7 +21,14 @@ const Card = (props) => {
               ? props.title.slice(0, 25) + "..."
               : props.title}
           </Text>
-          <MaterialIcons name="favorite-border" color="#72bcd4" size={30} />
+          <MaterialIcons
+            name="favorite-border"
+            color="#72bcd4"
+            size={30}
+            onPress={() => {
+              dispatch(newsAction.toggleFavorites(props.url));
+            }}
+          />
         </View>
 
         <View style={styles.descriptionWrapper}>
