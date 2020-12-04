@@ -17,17 +17,24 @@ const Card = (props) => {
     <TouchableOpacity onPress={() => props.navigation.navigate("NewsDetails")}>
       <View style={styles.card}>
         <View style={styles.imageWrapper}>
-          <Image source={{ uri: props.image }} style={styles.image} />
+          <Image
+            source={{
+              uri: props.image
+                ? props.image
+                : "https://images.unsplash.com/photo-1555245654-a6ed32522cb0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+            }}
+            style={styles.image}
+          />
         </View>
 
         <View style={styles.titleWrapper}>
           <Text style={styles.title}>
-            {props.title.length > 25
+            {props.title && props.title.length > 25
               ? props.title.slice(0, 25) + "..."
               : props.title}
           </Text>
           <MaterialIcons
-            name={isFav ? 'favorite' : 'favorite-border'}
+            name={isFav ? "favorite" : "favorite-border"}
             color="#72bcd4"
             size={30}
             onPress={() => {
@@ -38,7 +45,7 @@ const Card = (props) => {
 
         <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>
-            {props.description.length > 100
+            {props.description && props.description.length > 100
               ? props.title.slice(0, 100) + " ..."
               : props.description}
           </Text>
