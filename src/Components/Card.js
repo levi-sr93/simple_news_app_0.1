@@ -16,12 +16,8 @@ const Card = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        props.navigation.navigate({
-          routeName: "NewsDetails",
-          params: {
-            title: props.title,
-            description: props.description,
-          },
+        props.navigation.navigate('NewsDetails', {
+          articleUrl: props.url
         });
       }}
     >

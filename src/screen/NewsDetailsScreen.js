@@ -1,22 +1,34 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-const NewsDetailsScreen = () => {
+
+import { useSelector } from "react-redux";
+const NewsDetailsScreen = (props) => {
+  //getting the unique value articleUrl that was sent from Card component
+  const { articleUrl } = props.route.params;
+
+  const article = useSelector((state) =>
+    state.news.articles.articles.find((article) => article.url === articleUrl)
+  );
+
   return (
-    <View styles={styles.container}>
-      <View styles={styles.heading}>
-        <Text styles={styles.title}></Text>
+    <View style={styles.container}>
+      <View style={styles.heading}>
+        <Text style={styles.title}>{article.title}</Text>
       </View>
       <View>
-        <ImageBackground styles={styles.image}>
+        <ImageBackground
+          source={{ uri: article.urlToImage }}
+          style={styles.image}
+        >
           <View style={styles.titleContainer}>
-            <Text styles={styles.author}></Text>
+            <Text style={styles.author}>{article.author}</Text>
             <MaterialIcons />
           </View>
         </ImageBackground>
       </View>
-      <View styles={styles.description}>
-        <Text styles={styles.descriptionText}></Text>
+      <View style={styles.description}>
+        <Text style={styles.descriptionText}>{article.description}</Text>
       </View>
     </View>
   );
@@ -58,8 +70,8 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 20,
-    fontFamily: 'Ubuntu'
-  }
+    fontFamily: "Ubuntu",
+  },
 });
 
 export default NewsDetailsScreen;
